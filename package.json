@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": ["social-comics", "api"],
   "author": "Matheus Santos Araújo da Silva <souzamatheus8174@gmail.com> (https://your-url.com/)",
   "license": "MIT",
   "devDependencies": {
@@ -15,6 +15,7 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.25.2",
-    "git-commit-msg-linter": "3.2.8"
+    "git-commit-msg-linter": "3.2.8",
+    "typescript": "^4.4.4"
   }
 }
