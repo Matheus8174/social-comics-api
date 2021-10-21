@@ -10,7 +10,11 @@
   "author": "Matheus Santos Araújo da Silva <souzamatheus8174@gmail.com> (https://your-url.com/)",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^8.0.1",
+    "@typescript-eslint/eslint-plugin": "^5.1.0",
+    "@typescript-eslint/parser": "^5.1.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.25.2",
     "git-commit-msg-linter": "3.2.8"
   }
 }
