@@ -6,6 +6,10 @@
   "scripts": {
     "dev": "ts-node-dev --inspect --transpile-only --ignore-watch node_modules src/server.ts"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Matheus8174/social-comics-api.git"
+  },
   "keywords": [
     "social-comics",
     "api"
