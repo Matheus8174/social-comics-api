@@ -6,7 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": ["social-comics", "api"],
+  "keywords": [
+    "social-comics",
+    "api"
+  ],
   "author": "Matheus Santos Araújo da Silva <souzamatheus8174@gmail.com> (https://your-url.com/)",
   "license": "MIT",
   "devDependencies": {
@@ -14,8 +17,12 @@
     "@typescript-eslint/parser": "^5.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "git-commit-msg-linter": "3.2.8",
+    "prettier": "^2.4.1",
     "typescript": "^4.4.4"
   }
 }
