@@ -1,0 +1,414 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "social-comics-api",
+    "description": "social-comics-api documentation",
+    "version": "1.0.0",
+    "contact": {
+      "email": "souzamatheus8174@gmail.com"
+    }
+  },
+  "basePath": "/",
+  "paths": {
+    "/api/v1/clientes": {
+      "post": {
+        "summary": "Cadastrar novo cliente",
+        "description": "Cadastra/cria um novo cliente na api",
+        "tags": ["clientes"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cliente"
+              },
+              "examples": {
+                "cliente": {
+                  "value": {
+                    "name": "Matheus",
+                    "email": "souzamatheus8174@gmail.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Cliente created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/clienteResponse"
+                },
+                "examples": {
+                  "cliente": {
+                    "value": {
+                      "name": "Matheus",
+                      "email": "souzamatheus8174@gmail.com",
+                      "_id": "61747dbe312ab7db6f07565a",
+                      "createdAt": "2021-10-23T21:25:18.488Z",
+                      "updatedAt": "2021-10-23T21:25:18.488Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Email already in use"
+          }
+        }
+      },
+      "get": {
+        "summary": "listar clientes",
+        "description": "lista todos os clientes cadastrados",
+        "tags": ["clientes"],
+        "security": [{ "bearerAuth": [] }],
+        "responses": {
+          "200": {
+            "description": "Clientes listados",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/clienteResponse"
+                  }
+                },
+                "examples": {
+                  "cliente": {
+                    "value": [
+                      {
+                        "name": "Matheus",
+                        "email": "souzamatheus8174@gmail.com",
+                        "_id": "61747dbe312ab7db6f07565a",
+                        "createdAt": "2021-10-23T21:25:18.488Z",
+                        "updatedAt": "2021-10-23T21:25:18.488Z",
+                        "__v": 0
+                      },
+                      {
+                        "_id": "6175556c47aa1032034a9c9c",
+                        "name": "carlosN",
+                        "email": "CarlosN@gmail.com",
+                        "createdAt": "2021-10-24T12:45:32.039Z",
+                        "updatedAt": "2021-10-24T12:45:32.039Z",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid JWT token"
+          }
+        }
+      },
+      "put": {
+        "summary": "atualizar cliente",
+        "description": "atualiza um cliente já cadastrado",
+        "tags": ["clientes"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  }
+                }
+              },
+              "examples": {
+                "cliente": {
+                  "value": {
+                    "id": "61731ae66b3df8cec6debe13",
+                    "name": "Matheus",
+                    "email": "souzamatheus8174@gmail.com"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Cliente atualizado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/clienteResponse"
+                },
+                "examples": {
+                  "cliente": {
+                    "value": {
+                      "_id": "61747dbe312ab7db6f07565a",
+                      "name": "Matheus",
+                      "email": "souzamatheus8174@gmail.com",
+                      "createdAt": "2021-10-23T21:25:18.488Z",
+                      "updatedAt": "2021-10-23T21:25:18.488Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado"
+          },
+          "401": {
+            "description": "Invalid JWT token"
+          }
+        }
+      }
+    },
+    "/api/v1/clientes/{id}": {
+      "get": {
+        "summary": "Encontrar um cliente pelo seu id",
+        "description": "Retorna os dados de um cliente já cadastrado",
+        "security": [{ "bearerAuth": [] }],
+        "tags": ["clientes"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "description": "Id do cliente",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cliente encontrado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/clienteResponse"
+                },
+                "examples": {
+                  "cliente": {
+                    "value": {
+                      "_id": "61747dbe312ab7db6f07565a",
+                      "name": "Matheus",
+                      "email": "souzamatheus8174@gmail.com",
+                      "createdAt": "2021-10-23T21:25:18.488Z",
+                      "updatedAt": "2021-10-23T21:25:18.488Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado"
+          },
+          "401": {
+            "description": "Invalid JWT token"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deletar um cliente pelo seu id",
+        "description": "Deleta e retorna os dados de um cliente já cadastrado",
+        "security": [{ "bearerAuth": [] }],
+        "tags": ["clientes"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "type": "string",
+            "description": "Id do cliente",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Cliente deletado",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/clienteResponse"
+                },
+                "examples": {
+                  "cliente": {
+                    "value": {
+                      "_id": "61747dbe312ab7db6f07565a",
+                      "name": "Matheus",
+                      "email": "souzamatheus8174@gmail.com",
+                      "createdAt": "2021-10-23T21:25:18.488Z",
+                      "updatedAt": "2021-10-23T21:25:18.488Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Cliente não encontrado"
+          },
+          "401": {
+            "description": "Invalid JWT token"
+          }
+        }
+      }
+    },
+    "/api/v1/authenticate": {
+      "post": {
+        "summary": "Autenticar",
+        "description": "Cria um novo token JWT para autenticação",
+        "tags": ["authenticate"],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/cliente"
+              },
+              "examples": {
+                "cliente": {
+                  "value": {
+                    "name": "Matheus",
+                    "email": "souzamatheus8174@gmail.com",
+                    "password": "123456"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Autenticação realizada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+
+                  "$ref": "#/components/schemas/authResponse"
+                },
+                "examples": {
+                  "cliente": {
+                    "value": {
+                      "cliente": {
+                        "_id": "61747dbe312ab7db6f07565a",
+                        "name": "Matheus",
+                        "email": "souzamatheus8174@gmail.com",
+                        "createdAt": "2021-10-23T21:25:18.488Z",
+                        "updatedAt": "2021-10-23T21:25:18.488Z",
+                        "__v": 0
+                      },
+                      "token": "eyJhbGciOiJIUzI1NuIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxNzU1NTZjNDdhYTEwMzIwMzRhOWM5YyIsImlhdCI6MTYzNTA4NDMwNywiZXhwIjoxNjM1MTcwNzA3fQ.Cj0Ys4zdEZ1gNbZLmO31GKpFvElZnqXQ7PC5dklZmSE"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Email e/ou senha invalidos"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "cliente": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          }
+        }
+      },
+      "clienteResponse": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "_id": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "time-format"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "time-format"
+          },
+          "__v": {
+            "type": "number"
+          }
+        }
+      },
+      "authResponse": {
+        "type": "object",
+        "properties": {
+          "cliente": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              },
+              "_id": {
+                "type": "string"
+              },
+              "createdAt": {
+                "type": "string",
+                "format": "time-format"
+              },
+              "updatedAt": {
+                "type": "string",
+                "format": "time-format"
+              },
+              "__v": {
+                "type": "number"
+              }
+            }
+          },
+          "token": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}
+
