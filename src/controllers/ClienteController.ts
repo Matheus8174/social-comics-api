@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import Cliente from '@models/Cliente';
-import AppError from 'src/errors/AppError';
+import Cliente from '../models/Cliente';
+import AppError from '../errors/AppError';
 
 class ClienteController {
   public async listAll(request: Request, response: Response) {
